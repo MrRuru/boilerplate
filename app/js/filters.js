@@ -6,5 +6,11 @@ define(['angular', 'services'], function (angular, services) {
       return function(text) {
         return String(text).replace(/\%VERSION\%/mg, version);
       };
-  }]);
+    }])
+
+    .filter('toEuro', ['version', function(version) {
+      return function(text) {
+        return text + " €";
+      };
+    }]);
 });

@@ -1,0 +1,24 @@
+/*colors:
+grey: #594F4F
+teal: #547980
+blue: #45ADA8
+green: #9DE0AD
+lime: #E5FCC2
+*/
+
+#bet-list .bet{
+  padding: 1em;
+  color: white;
+  background-color: #594F4F;
+  margin-bottom: 1em;
+  text-align: center;
+  cursor: pointer;
+}
+
+#bet-list .bet h2{
+  color: white;
+}
+
+#bet-list .bet h3{
+  color: #45ADA8;
+}

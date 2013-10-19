@@ -6,12 +6,14 @@ require.config({
   paths:{
     jquery: "../components/jquery/jquery",
     angular: "../components/angular/angular",
-    angularRoute: '../components/angular-route/angular-route'
+    angularRoute: '../components/angular-route/angular-route',
+    underscore: '../components/underscore/underscore'
   },
 
   shim: {
     'angular' : {'exports' : 'angular'},
-    'angularRoute': ['angular']
+    'angularRoute': ['angular'],
+    'underscore' : {'exports' : '_'}
   },
 
   priority: [
@@ -30,9 +32,10 @@ require( [
 
   'angular',
   'app',
-  'routes'
+  'routes',
+  'layout'
 
-], function(angular, app, routes) {
+], function(angular, app, routes, layout) {
 
   'use strict';
 
