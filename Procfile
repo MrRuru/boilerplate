@@ -1,0 +1,1 @@
+web: bundle exec thin start -s3 --socket /tmp/thin.sock -R config.ru
