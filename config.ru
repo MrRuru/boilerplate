@@ -9,7 +9,7 @@ urlmap = {
 
 # Serve static files in dev
 if ENV['RACK_ENV'] == 'development'
-  urlmap["/"] = Rack::Static.new(nil, :urls => ["/", "/components"], :root => "app")
+  urlmap["/"] = Rack::Static.new(nil, :urls => ["/", "/js", "/css", "/partials", "/components"], :root => "app")
 end  
 
 
