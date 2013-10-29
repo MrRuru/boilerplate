@@ -10,8 +10,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Use vagrant on aws
-  config.vm.box = "ubuntu_aws"
-  config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+  # config.vm.box = "ubuntu_aws"
+  # config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box" # Ubuntu 12.04 64bit
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root"
  
   # The url from where the 'config.vm.box' box will be fetched if it
@@ -22,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network :forwarded_port, guest: 80, host: 8080
-  config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 80, host: 8880
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -62,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     aws.keypair_name = "vagrant"
     override.ssh.private_key_path = "~/.ssh/vagrant.pem"
 
-    aws.instance_type = "m1.large"
+    aws.instance_type = "t1.micro"
     aws.security_groups = ["vagrant"]
     aws.region = "eu-west-1"
 
