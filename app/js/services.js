@@ -37,11 +37,13 @@ define(['angular'], function (angular) {
           var ws = new WebSocket("ws://localhost:3000/ws/"+channel_name);
 
           ws.onopen = function() {
-            service.callback("Succeeded to open a connection");
+            console.log("Succeeded to open a connection");
+            //       service.callback("Succeeded to open a connection");
           };
        
           ws.onerror = function() {
-            service.callback("Failed to open a connection");
+            console.log("Failed to open a connection");
+            //       service.callback("Failed to open a connection");
           }
        
           ws.onmessage = function(message) {

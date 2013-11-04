@@ -3,29 +3,35 @@ define(['underscore'], function(_) {
          function($scope, $http, $routeParams, bets, socket, visitorId) {
 
     var betId = $routeParams.betId;
+    var uId = $routeParams.uId;
     $scope.bet = _.find(bets, function(bet){return bet.id == betId});
 
     $scope.visitorId = visitorId;
 
-    var channel = socket("mybet");
+    $scope.status = "loading";
+
+    var channel = socket(betId + uId);
     channel.connect();
 
     channel.subscribe(function(message) {
       console.log('got message', message);
+      $scope.status = (JSON.parse(message)).status;
       $scope.$apply();
     });
 
 
     var statuses = {
-      "loading": "Waiting for your opponent...",
+      "loading": "Loading...",
+      "not_full": "Waiting for an opponent...",
+      "ongoing": "Waiting until everyone answer",
+      "disagree": "Did not agree, cancelled",
+      "finished": "Everyone was ok. Over."
+    };
 
-    }
-
-    var betStatus = "loading";
     var chosenOutcome = null;
 
     $scope.showBets = function(){
-      return true;
+      return $scope.status !== "loading";
     };
 
     $scope.showStatus = function(){
@@ -33,7 +39,7 @@ define(['underscore'], function(_) {
     };
 
     $scope.fullStatus = function(){
-      return statuses[betStatus];
+      return statuses[$scope.status];
     };
 
     $scope.isWinning = function(){

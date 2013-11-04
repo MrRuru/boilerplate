@@ -6,6 +6,7 @@ module Api
   class Websocket < Rack::WebSocket::Application
 
     BETS = {}
+    SOCKETS = {}
 
     def initialize
     end
@@ -14,11 +15,12 @@ module Api
     # Client connect / disconnect and bet creation / removal
     def on_open(env)
       puts "Client connected"
-      get_ws_data!(env)      
+      get_ws_data!(env)
 
       msg = @bet.add_user(@user_id)
 
-      send_data "Bet response on connect : #{msg}"
+      puts "Bet : #{@bet.inspect}"
+      send_bet
     end
 
     def on_close(env)
@@ -27,7 +29,8 @@ module Api
 
       msg = @bet.remove_user(@user_id)
 
-      send_data "Bet response on disconnect : #{msg}"
+      puts "Bet : #{@bet.inspect}"
+      send_bet
     end
 
 
@@ -44,12 +47,16 @@ module Api
         @bet.set_losing(@user_id)
       end
 
-      res = @bet.status
-      send_data "New bet status : #{res}"
+      puts "Bet : #{@bet.inspect}"
+      send_bet
     end
 
 
     private
+
+    def send_bet
+      send_data(@bet.to_json)
+    end
 
     def get_ws_data!(env)
       @channel = env['REQUEST_PATH'][4..-1] # Remove the /ws from the url

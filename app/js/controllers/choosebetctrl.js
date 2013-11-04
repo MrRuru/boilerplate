@@ -6,11 +6,14 @@ define([], function() {
     // You can access the scope of the controller from here
     $scope.welcomeMessage = 'hey this is choosebetctrl.js!';
 
+    var uId = function(){
+      return Math.floor(Math.random() * 100);
+    };
 
     $scope.launchBet = function(bet){
       console.log('launching bet', bet);
 
-      $location.path('/bet/'+bet.id);
+      $location.path('/bet/'+bet.id + '/' + uId());
     };
 
     // because this has happened asynchroneusly we've missed

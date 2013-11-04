@@ -1,3 +1,5 @@
+require 'json'
+
 module Api::Models
 
   class Bet
@@ -6,6 +8,10 @@ module Api::Models
       @contestants = {} # key => :winner, :loser or nil
     end
 
+    def to_json
+      {:status => status}.to_json
+    end
+    
 
     def status
       statuses = @contestants.values

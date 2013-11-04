@@ -13,17 +13,17 @@ define(['angular', 'app'], function(angular, app) {
 		// 	controller: 'MyCtrl2'
 		// });
 
-		$routeProvider.otherwise({redirectTo: '/'});
-
     $routeProvider.when('/', {
      templateUrl: 'partials/choose_bet.html',
      controller: 'ChooseBetCtrl'
     }).
 
-    when('/bet/:betId', {
+    when('/bet/:betId/:uId', {
      templateUrl: 'partials/bet.html',
      controller: 'BetCtrl'
-    });
+    }).
+
+    otherwise({redirectTo: '/'});
 
 	}]);
 
