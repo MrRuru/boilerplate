@@ -1,24 +1,89 @@
-/*colors:
-grey: #594F4F
-teal: #547980
-blue: #45ADA8
-green: #9DE0AD
-lime: #E5FCC2
+/*
+  blue : #1189d9;
+  black : #252528;
+  gray: #A9B4BB;
+  gray2 : #777E83;
+
 */
+
+
+
 
 #bet-list .bet{
   padding: 1em;
-  color: white;
-  background-color: #594F4F;
+  border-top: 1px solid rgba(255,255,255,0.25);
   margin-bottom: 1em;
   text-align: center;
   cursor: pointer;
 }
 
 #bet-list .bet h2{
-  color: white;
+  color: #A9B4BB;
 }
 
 #bet-list .bet h3{
-  color: #45ADA8;
+  color: #777E83;
+}
+
+#bet-status h2.message{
+  text-align: center;
+  margin: 2em 0;
+}
+
+#bet-status .status{
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+#bet-status .status h2{
+  color: white;
+  text-align: center;
+  font-size: 4em;
+  padding: 0.5em 0;
+}
+
+#bet-status .status h2:before{
+  font-family: 'FontAwesome';
+  color: white;
+  opacity: .15;
+  position: absolute;
+  font-size: 4em;
+  top: -0.35em;
+  left: -0.20em;
+}
+
+#bet-status .status.winning{
+  background-color: #7FAF1B;
+}
+
+#bet-status .status.winning h2:before{
+  content: '\f00c';
+}
+
+#bet-status .status.losing{
+  background-color: #E73525;
+}
+
+#bet-status .status.losing h2:before{
+  content: '\f00d';
+}
+
+
+body{
+  background-color: #252528;
+  color: #c4c4c4;
+}
+
+body, h1, h2, h3, h4, h5, h6{
+  font-family: 'Viga';
+  text-transform: uppercase;
+}
+
+h1{
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+  color: #1189d9;
 }

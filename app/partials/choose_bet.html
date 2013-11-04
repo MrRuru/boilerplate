@@ -1,14 +1,15 @@
-<div class="row" id="bet-list">
+<div class="container">
 
-  <div class="col-md-12">
-    <p class="lead">Choose a bet ...</p>
-  </div>
+  <h1>Choose a bet</h1>
 
-  <div class="col-sm-6" ng-repeat="bet in bets">
-    <div class="bet" ng-click="launchBet({{bet}})">
-      <h2>{{ bet.desc }}</h2>
-      <h3>{{ bet.money | toEuro }}</h3>
+  <div class="row" id="bet-list">
+
+    <div class="col-sm-6" ng-repeat="bet in bets">
+      <div class="bet" ng-click="launchBet({{bet}})">
+        <h2>{{ bet.desc }}</h2>
+        <h3>{{ bet.money | toEuro }}</h3>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>

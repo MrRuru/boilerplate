@@ -7,13 +7,15 @@
     <meta name="description" content="Your description here.">
     <meta name="viewport" content="width=device-width">
 
+    <!-- Webfont -->
+    <link href='http://fonts.googleapis.com/css?family=Viga' rel='stylesheet' type='text/css'>
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
 
 
     <!-- Add custom CSS here -->    
-    <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     
   </head>
@@ -21,31 +23,7 @@
   <body>
     <div id="wrapper">
       
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-          <li class="sidebar-brand"><a href="#">Home</a></li>
-          <li><a href="#">Menu1</a></li>
-          <li><a href="#">Menu2</a></li>
-          <li><a href="#">Menu3</a></li>
-        </ul>
-      </div>
-          
-      <!-- Page content -->
-      <div id="page-content-wrapper">
-        <div class="content-header">
-          <h1>
-            <a id="menu-toggle" class="btn btn-default"><i class="icon-reorder"></i></a>
-            Hello world
-          </h1>
-        </div>
-        <!-- Keep all page content within the page-content inset div! -->
-        <div class="page-content inset">
-
-          <div ng-view></div>
-
-        </div>
-      </div>
+      <div ng-view></div>
       
     </div>
 

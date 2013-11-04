@@ -1,6 +1,27 @@
-<div id="bet">
-  <h1>Betting on : {{ bet.desc }}</h1>
-  <h2>{{ bet.money | toEuro }}</h2>
-</div>
+<div class="container" id="bet-status">
 
-<a ng-click="sendMessage()">Coucou?</a>
+  <h1>Betting on : {{ bet.desc }}</h1>
+
+
+  <div ng-show="showStatus()">
+    <h2 class="message">{{ fullStatus() }}</h2>
+  </div>
+
+
+  <div ng-show="showBets()">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="status winning" ng-click="winBet()">
+          <h2>I won</h2>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="status losing" ng-click="loseBet()">
+          <h2>I lost</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

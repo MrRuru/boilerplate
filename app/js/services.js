@@ -25,39 +25,43 @@ define(['angular'], function (angular) {
         desc: "A restaurant"
       }      
     ])
+    .value('visitorId', (Math.floor(Math.random() * 1000)))
     .factory('socket', function(){
 
-      var service = {};
-     
-      service.connect = function() {
-        if(service.ws) { return; }
-     
-        var ws = new WebSocket("ws://localhost:3000/ws");
-     
-        ws.onopen = function() {
-          service.callback("Succeeded to open a connection");
-        };
-     
-        ws.onerror = function() {
-          service.callback("Failed to open a connection");
-        }
-     
-        ws.onmessage = function(message) {
-          service.callback(message.data);
-        };
-     
-        service.ws = ws;
-      }
-     
-      service.send = function(message) {
-        service.ws.send(message);
-      }
-     
-      service.subscribe = function(callback) {
-        service.callback = callback;
-      }
-           
-      return service;
+      return function(channel_name){
+        var service = {};
+
+        service.connect = function() {
+          if(service.ws) { return; }
+
+          var ws = new WebSocket("ws://localhost:3000/ws/"+channel_name);
+
+          ws.onopen = function() {
+            service.callback("Succeeded to open a connection");
+          };
+       
+          ws.onerror = function() {
+            service.callback("Failed to open a connection");
+          }
+       
+          ws.onmessage = function(message) {
+            service.callback(message.data);
+          };
+
+          service.ws = ws;
+        }
+
+        service.send = function(message) {
+          service.ws.send(message);
+        }
+
+        service.subscribe = function(callback) {
+          service.callback = callback;
+        }
+
+        return service;
+
+      }
 
     });
 });
